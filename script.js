@@ -1,1 +1,21 @@
-console.log("JavaScript is ready to run");
+
+const fetchPokemon = () => {
+    const url = `https://pokeapi.co/api/v2/pokemon/6`
+    fetch(url)
+        .then(res => {
+            return res.json()
+        })
+        .then(data => {
+                console.log(data);
+                const pokemon = {};
+                pokemon['name'] = data.name;
+                pokemon['id'] = data.id;
+                pokemon['image'] = data.sprites['front_default'];
+                pokemon['type'] = data.types
+                                    .map((insideElement)=>insideElement.type.name)
+                                    .join(', ')
+                console.log(pokemon);
+        })
+}
+
+fetchPokemon();
