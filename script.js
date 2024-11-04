@@ -2,7 +2,7 @@ const pokedex = document.getElementById("pokedex");
 
 console.log(pokedex)
 
-
+//fetching pokemons using api and using and resolving promises.
 const fetchPokemon = () => {
 
     const fetchRequests = [];
@@ -29,10 +29,10 @@ const fetchPokemon = () => {
 const displayPokemon = (pokemon) => {
     console.log(pokemon);
     const pokemonHTML = pokemon.map( p => `
-        <li>
-            <img src="${p.image}"/>
-            <h2>${p.id} ${p.name}</h2>
-            <p>${p.type}</p>
+        <li class="card">
+            <img class="card=image" src="${p.image}"/>
+            <h2 class="card-title">${p.id}. ${p.name}</h2>
+            <p class="card-subtitle">${p.type}</p>
 
         </li>
         
