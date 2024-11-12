@@ -48,7 +48,7 @@ const displayPopup = (pokemonData) => {
             <button id="closeBtn" onclick="closePopup()">
                 close
             </button>
-             <div class="card">
+            <div class="card">
             <img class="card=image" src="${image}"/>
             <h2 class="card-title">${pokemonData.id}. ${pokemonData.name}</h2>
             <p><small>Height: </small>${pokemonData.height} | <small>Weight: </small>${pokemonData.weight} |
