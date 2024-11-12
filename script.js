@@ -1,4 +1,5 @@
 const pokedex = document.getElementById("pokedex");
+const pokeCache = {}
 
 console.log(pokedex)
 
@@ -24,8 +25,6 @@ const displayPokemon = (pokemon) => {
         <li class="card" onclick="selectPokemon(${p.id})">
             <img class="card=image" src="${p.image}"/>
             <h2 class="card-title">${p.id}. ${p.name}</h2>
-            
-
         </li>
         
         `).join("")
@@ -33,11 +32,19 @@ const displayPokemon = (pokemon) => {
 }
 
 const selectPokemon = async (id) => {
-   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-   const res = await fetch(url);
-   const pokemonData = await res.json();
-    // this is a callback funcn  which will be passed as an argument in displayPopup() later on..
-   displayPopup(pokemonData);
+    
+    if(!pokeCache[id]){
+
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+        const res = await fetch(url);
+        const pokemonData = await res.json();
+        // this is a callback funcn  which will be passed as an argument in displayPopup() later on..
+        pokeCache[id] = pokemonData;
+        displayPopup(pokemonData);
+    }else{
+        displayPopup(pokeCache[id]);
+    }
+ 
 } 
 
 const displayPopup = (pokemonData) => {
